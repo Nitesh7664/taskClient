@@ -14,8 +14,6 @@ function ClassSection({data, fetchClass}) {
    let {classCode} = useParams()
 
    useEffect(() => {
-      console.log(classCode)
-      console.log(data)
       if(classCode)
          fetchClass(classCode)
    }, [fetchClass, classCode])

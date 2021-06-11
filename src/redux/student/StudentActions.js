@@ -26,7 +26,6 @@ export const addStudent = data => async dispatch => {
       dispatch(fetchClass(data.classCode))
       dispatch({type: ADD_STUDENT_SUCCESS, payload: result.data.student})
    }catch(err){
-      console.log(err.response.data.message)
       dispatch({type: ADD_STUDENT_FAILURE, payload: err.response.data.message})
    }
 
@@ -45,6 +44,5 @@ export const editStudent = data => async dispatch => {
 }
 
 export const clearErrorMessage = () => dispatch => {
-   console.log('clearErrorMessage')
    dispatch({type: CLEAR_ERROR_MESSAGE, payload: ''})
 }

@@ -57,7 +57,6 @@ function Students({data, loadStudents, addStudent, editStudent, classCode, clear
 
    const addStudentToClass = (e) => {
       e.preventDefault()
-      console.log('called')
       if(isValid()){
          const postStudentData = {
             name, username, password, classCode
