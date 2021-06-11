@@ -20,7 +20,7 @@
    width: 100%;
    padding: 0.5em 0;
 }
-.row:hover, .active_link{
+.row:hover{
    background: #081018;
 }
 .menu_item{
@@ -68,6 +68,20 @@
    color: #122335;
    padding-top: 0.6em;
    margin: 0 auto;
+}
+.active_link .icon{
+   background: #37D893;
+   color: #fff ;
+   height: 35px;
+   width: 35px;
+   border-radius: 3px;
+   font-size: 20px;
+   font-weight: bold;
+   padding-top: 0.3em;
+   margin: 0 auto;
+}
+.active_link *{
+   color: #fff !important;
 }
 .square_background{
    background: #37D893;

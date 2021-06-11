@@ -21,9 +21,9 @@ const menuItems = {
          path: '/chart'
       },
       {
-         title: 'Manage Class',
+         title: 'cart',
          icon: <i class="fas fa-inbox large_text"></i>,
-         path: '/class/meHjoTJ-s'
+         path: '/cart'
       }
    ],
    classItems2: [
@@ -45,9 +45,9 @@ const menuItems = {
    ],
    classItems3: [
       {
-         title: 'CART',
-         icon: <i class="fas fa-cart-arrow-down large_text white"></i>,
-         path: '/cart'
+         title: 'Manage Class',
+         icon: <i class="fas fa-chalkboard large_text"></i>,
+         path: '/class/meHjoTJ-s'
       }
    ],
    userItems: [
@@ -117,7 +117,7 @@ function SideMenu({menuOpen}) {
             <>
             <NavLink to={menuItems.classItems3[0].path} className={styles.row} activeClassName={styles.active_link}>
                <div className={styles.menu_item}>
-                  <div className={menuOpen? `${styles.icon} ${styles.square_background}`: `${styles.icon} ${styles.menu_shrink_icon} ${styles.square_background}`}>{menuItems.classItems3[0].icon}</div>
+                  <div className={menuOpen? `${styles.icon}`: `${styles.icon} ${styles.menu_shrink_icon}`}>{menuItems.classItems3[0].icon}</div>
                   <div className={menuOpen? styles.value: `${styles.value} ${styles.menu_shrink_value}`}>{menuItems.classItems3[0].title}</div>
                </div>
             </NavLink>
