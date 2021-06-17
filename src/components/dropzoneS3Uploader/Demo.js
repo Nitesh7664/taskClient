@@ -125,10 +125,7 @@ export default class DropzoneS3Uploader extends React.Component {
       className: PropTypes.oneOfType([
          PropTypes.string,
          PropTypes.object,
-      ]),
-      style: PropTypes.object,
-      activeStyle: PropTypes.object,
-      rejectStyle: PropTypes.object,
+      ])
    }
 
    static defaultProps = {
@@ -139,25 +136,7 @@ export default class DropzoneS3Uploader extends React.Component {
       uploadOnDrop: true,
       isImage: filename => filename && filename.match(/\.(jpeg|jpg|gif|png|svg)/i),
       notDropzoneProps: ['onFinish', 'onDrop', 's3Url', 'filename', 'host', 'upload',
-                        'isImage', 'notDropzoneProps', 'uploadOnDrop'],
-
-      style: {
-         width: 200,
-         height: 200,
-         border: 'dashed 2px #999',
-         borderRadius: 5,
-         position: 'relative',
-         cursor: 'pointer',
-         overflow: 'hidden',
-      },
-      activeStyle: {
-         borderStyle: 'solid',
-         backgroundColor: '#eee',
-      },
-      rejectStyle: {
-         borderStyle: 'solid',
-         backgroundColor: '#ffdddd',
-      },
+                        'isImage', 'notDropzoneProps', 'uploadOnDrop']
    }
 
    constructor(props) {
