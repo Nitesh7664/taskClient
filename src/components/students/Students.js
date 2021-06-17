@@ -194,6 +194,10 @@ function Students({data, loadStudents, addStudent, editStudent, classCode, clear
       alert("Does Nothing")
    }
 
+   const uploadAssignment = assingmentId => {
+      window.open(`/uploadAssignment/${assingmentId}`, "_blank")
+   }
+
 
    return (
       data.isLoading?
@@ -214,7 +218,7 @@ function Students({data, loadStudents, addStudent, editStudent, classCode, clear
                      <button onClick={handleAdd} className={`${styles.button} ${styles.white}`}><i className="fas fa-plus-circle green"></i> add student</button>
                      <button className={`${styles.button} ${styles.green}`} onClick={doNothing}><i className="fas fa-plus-circle white"></i> add multiple students</button>
                      <button className={`${styles.button} ${styles.white}`} onClick={doNothing}><i className="fas fa-print green" ></i> Print</button>
-                     <button className={`${styles.button} ${styles.white}`} onClick={doNothing}>actions</button>
+                     <button className={`${styles.button} ${styles.white}`} onClick={() => uploadAssignment('assign1234')}>actions</button>
                   </div>
                </div>
                <br /><br /><br />

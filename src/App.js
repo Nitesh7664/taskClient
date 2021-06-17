@@ -7,6 +7,8 @@ import Header from './components/header/Header'
 import SideMenu from './components/sideMenu/SideMenu'
 import ClassSection from './components/classSection/ClassSection'
 import DefaultPage from './components/defaultPage/DefaultPage'
+import DropzoneS3Uploader from './components/dropzoneS3Uploader/DropzoneS3Uploader'
+import Demo from './components/dropzoneS3Uploader/Demo'
 
 Modal.setAppElement(document.getElementById('root'));
 
@@ -20,8 +22,10 @@ export default function App() {
          </div>
          <div className={menuOpen?"content":"content_expand"}>
             <Switch>
+               <Route exact path='/uploadAssignment/:assignId' component={Demo} />
                <Route path='/header' component={Header}/>
                <Route path='/class/:classCode' component={ClassSection}/>
+               <Route path='/fileUpload/:assingmentId' component={DropzoneS3Uploader} />
                <Route component={DefaultPage}/>
             </Switch>   
          </div>
