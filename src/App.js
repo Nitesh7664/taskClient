@@ -18,11 +18,11 @@ export default function App() {
       <div className='app'>
          <div className={menuOpen?"menu":"menu menu_shrink"}>
             <SideMenu menuOpen={menuOpen}/>
-            <button className='toggle_button' onClick={() => setMenuOpen(!menuOpen)}>{!menuOpen?<i class="fas fa-chevron-right"></i>: <i class="fas fa-chevron-left"></i>}</button>
+            <button className='toggle_button' onClick={() => setMenuOpen(!menuOpen)}>{!menuOpen?<i className="fas fa-chevron-right"></i>: <i className="fas fa-chevron-left"></i>}</button>
          </div>
          <div className={menuOpen?"content":"content_expand"}>
             <Switch>
-               <Route exact path='/uploadAssignment/:assignId' component={Demo} />
+               <Route exact path='/uploadAssignment' component={Demo} />
                <Route path='/header' component={Header}/>
                <Route path='/class/:classCode' component={ClassSection}/>
                <Route path='/fileUpload/:assingmentId' component={DropzoneS3Uploader} />

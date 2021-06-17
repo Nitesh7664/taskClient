@@ -11,9 +11,9 @@ const baseStyle = {
    display: 'flex',
    flexDirection: 'column',
    alignItems: 'center',
-   justifyContent: 'center',
+   justifyContent: 'flex-start',
    padding: '20px',
-   maxHeight: '300px',
+   height: 'fit-content',
    margin: '4em',
    borderWidth: 4,
    borderRadius: 2,
@@ -23,7 +23,8 @@ const baseStyle = {
    color: '#bdbdbd',
    outline: 'none',
    transition: 'border .24s ease-in-out',
-   fontSize: '3em'
+   fontSize: '3em',
+   overflow: 'hidden'
  };
  
  const activeStyle = {
@@ -38,11 +39,11 @@ const baseStyle = {
    borderColor: '#ff1744'
  };
 
-function Demo(props) {
+function MyDropzone(props) {
   const {open, acceptedFiles, fileRejections, isDragActive, isDragAccept, isDragReject} = useDropzone({
     // Disable click and keydown behavior
-    noClick: true,
-    noKeyboard: true
+    noClick: false,
+    noKeyboard: false
   });
   const style = useMemo(() => ({
    ...baseStyle,
@@ -61,8 +62,8 @@ function Demo(props) {
 
    return (
       <>
-      <Dropzone onDrop={props.onDrop} className="dropzone" accept="image/*, application/pdf">
-      {({getRootProps, getInputProps, acceptedFiles, fileRejections, isDragAccept, isDragReject}) => (
+      <Dropzone onDrop={props.onDrop} className="dropzone" accept="image/*, application/pdf" onClick={false} >
+      {({getRootProps, getInputProps, acceptedFiles, fileRejections}) => (
          <div {...getRootProps({style})}>
             <input {...getInputProps()} />
             <p className={styles.large_text}>Drag 'n' drop some files here</p>
@@ -70,7 +71,7 @@ function Demo(props) {
             Select Image/Pdf
             </button>
             <br />
-            <h1>Selected Files:</h1>
+            <h1>{acceptedFiles.length > 0? "Selected Files:": null}</h1>
             <ul>{acceptedFiles.map(file => (
                   <li key={file.path}>
                      {file.path} - {file.size} bytes
@@ -78,14 +79,14 @@ function Demo(props) {
                ))}
             </ul>  
             <br />
-            <h1>Rejected Files:</h1>
+            <h1>{fileRejections.length > 0? "Rejected Files:": null}</h1>
             <ul>{fileRejections.map(file => (
                   <li key={file.path}>
                      {file.path} - {file.size} bytes
                   </li>
                ))}
             </ul>
-            {(isDragAccept || isDragReject)? props.children: null}
+            {props.children}
          </div>
       )}
       </Dropzone>
@@ -94,6 +95,7 @@ function Demo(props) {
 }
 
 export default class DropzoneS3Uploader extends React.Component {
+   
 
    static propTypes = {
       filename: PropTypes.string,
@@ -142,9 +144,11 @@ export default class DropzoneS3Uploader extends React.Component {
    constructor(props) {
       super(props)
       const uploadedFiles = []
+      let assignmentId = new URLSearchParams(this.props.location.search).get("assignmentId")
       this.state = {
          uploadedFiles: uploadedFiles,
          selectedFiles: [],
+         assignmentId: assignmentId,
          activeUpload: null
       };
    }
@@ -193,7 +197,7 @@ export default class DropzoneS3Uploader extends React.Component {
    handleError = err => {
       this.props.onError && this.props.onError(err);
       if(this._mounted){
-         this.setState({error: err, progress: null, activeUpload: null,
+         this.setState({...this.state, error: err, progress: null, activeUpload: null,
                         activeUploadOptions: null});
       }
    }
@@ -209,7 +213,7 @@ export default class DropzoneS3Uploader extends React.Component {
 
       if(this._mounted){
          this.setState(
-         {uploadedFiles, error: null, progress: null, selectedFiles: [],
+         {...this.state, uploadedFiles, error: null, progress: null, selectedFiles: [],
             activeUpload: null, activeUploadOptions: null},
          () => {
             this.props.onFinish && this.props.onFinish(uploadedFile);
@@ -225,12 +229,27 @@ export default class DropzoneS3Uploader extends React.Component {
 
    handleDrop = (files, rejectedFiles) => {
       console.log("called handleDrop", files)
+      console.log("assignmentID", this.state.assignmentId)
       const options = {
          files,
          ...this.state.uploaderOptions
       };
       const newState = {
-         uploadedFiles: [],
+         assignmentId: this.state.assignmentId,
+         uploadedFiles: [
+            {file: {name: "cdcdc"}, fileUrl: "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"},
+            {file: {name: "cdcdc"}, fileUrl: "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"},
+            {file: {name: "cdcdc"}, fileUrl: "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size"},
+            {file: {name: "cdcdc"}, fileUrl: "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"},
+            {file: {name: "cdcdc"}, fileUrl: "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"},
+            {file: {name: "cdcdc"}, fileUrl: "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size"},
+            {file: {name: "cdcdc"}, fileUrl: "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"},
+            {file: {name: "cdcdc"}, fileUrl: "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"},
+            {file: {name: "cdcdc"}, fileUrl: "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size"},
+            {file: {name: "cdcdc"}, fileUrl: "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"},
+            {file: {name: "cdcdc"}, fileUrl: "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"},
+            {file: {name: "cdcdc"}, fileUrl: "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size"},
+         ],
          error: null,
          progress: null,
          selectedFiles: files
@@ -290,7 +309,7 @@ export default class DropzoneS3Uploader extends React.Component {
 
    fileUrl = (s3Url, filename) => `${s3Url.endsWith('/') ? s3Url.slice(0, -1) : s3Url}/${filename}`
 
-   renderImage = ({uploadedFile}) => (<div className="rdsu-image"><img src={uploadedFile.fileUrl} /></div>)
+   renderImage = ({uploadedFile}) => (<div className={"rdsu-image"}><img src={uploadedFile.fileUrl} className={styles.image}/></div>)
 
    renderFile = ({uploadedFile}) => (
       <div className="rdsu-file">
@@ -325,7 +344,7 @@ export default class DropzoneS3Uploader extends React.Component {
       this.props.notDropzoneProps.forEach(prop => delete dropzoneProps[prop])
 
       let content = (
-         <div>
+         <div className={styles.file_container}>
             {uploadedFiles.map(uploadedFile => {
                const props = {
                key: uploadedFile.filename,
@@ -342,9 +361,9 @@ export default class DropzoneS3Uploader extends React.Component {
          )
 
       return (
-         <Demo onDrop={this.handleDrop} >
+         <MyDropzone onDrop={this.handleDrop} >
             {content}
-         </Demo>
+         </MyDropzone>
       )
    }
 }

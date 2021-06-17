@@ -7,63 +7,63 @@ const menuItems = {
    classItems1: [
       {
          title: 'setting',
-         icon: <i class="fas fa-user-circle large_text"></i>,
+         icon: <i className="fas fa-user-circle large_text"></i>,
          path: '/setting'
       },
       {
          title: 'clip board',
-         icon: <i class="far fa-clipboard large_text"></i>,
+         icon: <i className="far fa-clipboard large_text"></i>,
          path: '/clipBoard'
       },
       {
          title: 'chart',
-         icon: <i class="fas fa-chart-bar large_text"></i>,
+         icon: <i className="fas fa-chart-bar large_text"></i>,
          path: '/chart'
       },
       {
          title: 'cart',
-         icon: <i class="fas fa-inbox large_text"></i>,
+         icon: <i className="fas fa-inbox large_text"></i>,
          path: '/cart'
       }
    ],
    classItems2: [
       {
          title: 'DOC 1',
-         icon: <i class="far fa-copy large_text"></i>,
+         icon: <i className="far fa-copy large_text"></i>,
          path: '/doc/1'
       },
       {
          title: 'DOC 2',
-         icon: <i class="far fa-copy large_text"></i>,
+         icon: <i className="far fa-copy large_text"></i>,
          path: '/doc/2'
       },
       {
          title: 'DOC 3',
-         icon: <i class="far fa-copy large_text"></i>,
+         icon: <i className="far fa-copy large_text"></i>,
          path: '/doc/3'
       }
    ],
    classItems3: [
       {
          title: 'Manage Class',
-         icon: <i class="fas fa-chalkboard large_text"></i>,
+         icon: <i className="fas fa-chalkboard large_text"></i>,
          path: '/class/meHjoTJ-s'
       }
    ],
    userItems: [
       {
          title: 'documentation',
-         icon: <i class="fas fa-rocket large_text"></i>,
+         icon: <i className="fas fa-rocket large_text"></i>,
          path: '/documentation'
       },
       {
          title: 'help',
-         icon: <i class={`fas fa-question green ${styles.bold} large_text`}></i>,
+         icon: <i className={`fas fa-question green ${styles.bold} large_text`}></i>,
          path: '/help'
       },
       {
          title: 'Ratan Tata',
-         icon: <i class="fas fa-user-tie"></i>,
+         icon: <i className="fas fa-user-tie"></i>,
          path: '/user'
       }
    ]
