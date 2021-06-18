@@ -228,8 +228,6 @@ export default class DropzoneS3Uploader extends React.Component {
    }
 
    handleDrop = (files, rejectedFiles) => {
-      console.log("called handleDrop", files)
-      console.log("assignmentID", this.state.assignmentId)
       const options = {
          files,
          ...this.state.uploaderOptions
